@@ -7,10 +7,10 @@ def f( t , s0 , Vmax1 , Km1 , Vmax2 , Km2 ):
     S2 = s0[ 1 ]
     
     v1 = Vmax1 * S1 / ( Km1 + S1 )
-    v2 = 
+    v2 = Vmax2 * S2 / ( Km2 + S2 )
     
     ds1dt = - v1
-    ds2dt = 
+    ds2dt = v1 - v2
     return [ ds1dt , ds2dt ] 
 
 s0 = [ 2.0E-3 , 0 ]

@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 y = 1.0
 t = 0.0
 delta_t = 0.01
-endtime = 1.0
+endtime = 5.0
 
-k = - 0.8	
+k = -0.2	
 
 y_list = [ y ]
 t_list = [ t ]
