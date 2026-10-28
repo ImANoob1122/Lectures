@@ -9,9 +9,9 @@ def selkov_model( t , init , *param ):
     [ a , b ] = param
 
 
-    v1 = 
-    v2 = 
-    v3 = 
+    v1 = b
+    v2 = a * y + x**2 * y
+    v3 = x
     
     dxdt = v2 - v3
     dydt = v1 - v2
@@ -33,6 +33,11 @@ solution = solve_ivp( selkov_model, t_span, init, t_eval=t_eval, method='RK45', 
 ADP = solution.y[0]
 F6P = solution.y[1]
 
-plt.plot( solution.t , ADP )
-plt.plot( solution.t , F6P ) 
+plt.plot( solution.t , ADP , label='ADP (x)' )
+plt.plot( solution.t , F6P , label='F6P (y)' )
+plt.xlabel( 't' )
+plt.ylabel( 'concentration' )
+plt.ylim( 0 , 3.5 )
+plt.legend( loc='upper right' )
+plt.savefig( 'selkov.png' , dpi=150 )
 plt.show()
