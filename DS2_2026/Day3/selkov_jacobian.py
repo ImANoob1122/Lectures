@@ -6,18 +6,17 @@ a_val = 0.06
 b_val = 0.6
 
 f = -x + a * y + x**2 * y
-g =  
+g = b - a * y - x**2 * y
 
 # ヌルクラインと固定点
-solutions = sp.solve( [       ,       ]  , ( x , y ) )
+solutions = sp.solve( [ f , g ]  , ( x , y ) )
 fix_x , fix_y = solutions[0]
 
 # ヤコビ行列
-J_sym = sp.Matrix( [ [ f.diff( x ) ,         ] , [         , g.diff( y ) ] ] )
-J_num = J_sym.subs( [ ( x ,     ) , ( y ,     ) , ( a , a_val ), ( b , b_val ) ] ) 
+J_sym = sp.Matrix( [ [ f.diff( x ) , f.diff( y ) ] , [ g.diff( x ) , g.diff( y ) ] ] )
+J_num = J_sym.subs( [ ( x , fix_x ) , ( y , fix_y ) , ( a , a_val ), ( b , b_val ) ] ) 
 
 print( J_sym )
 print( J_num )
-print( J_num.       )
-
+print( J_num.eigenvals() )
 
